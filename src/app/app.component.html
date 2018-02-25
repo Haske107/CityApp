@@ -1,0 +1,346 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="display-1">Orange</h1>
+
+      <br><br>
+      <h1 class="display-4">General Information</h1>
+      <hr>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Population</span>
+        </div>
+        <input type="text" class="form-control" placeholder="" aria-label="County" aria-describedby="basic-addon1">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon2">County</span>
+        </div>
+        <input type="text" class="form-control" placeholder="" aria-label="County" aria-describedby="basic-addon2">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Boundary Coordinates</span>
+        </div>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+      </div>
+
+      <br>
+      <h1 class="display-4">Permit Office Information</h1>
+      <hr>
+      <h4>Basic Info</h4>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon4">Address</span>
+        </div>
+        <input type="text" class="form-control" placeholder="" aria-label="Address" aria-describedby="basic-addon4">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon5">Phone Number</span>
+        </div>
+        <input type="text" class="form-control" placeholder="" aria-label="Phone Number" aria-describedby="basic-addon5">
+      </div>
+
+      <h4>Hours of Operation</h4>
+      <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm-Monday">Monday</span>
+      </div>
+      <input type="text" atp-time-picker class="form-control">
+      <input type="text" atp-time-picker class="form-control">
+    </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm-Tuesday">Tuesday</span>
+        </div>
+        <input type="text" atp-time-picker class="form-control">
+        <input type="text" atp-time-picker class="form-control">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm-Wednesday">Wednesday</span>
+        </div>
+        <input type="text" atp-time-picker class="form-control">
+        <input type="text" atp-time-picker class="form-control">
+      </div> <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm-Thursday">Thursday</span>
+      </div>
+      <input type="text" atp-time-picker class="form-control">
+      <input type="text" atp-time-picker class="form-control">
+    </div> <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm-Friday">Friday</span>
+      </div>
+      <input type="text" atp-time-picker class="form-control">
+      <input type="text" atp-time-picker class="form-control">
+    </div> <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm-Saturday">Saturday</span>
+      </div>
+      <input type="text" atp-time-picker class="form-control">
+      <input type="text" atp-time-picker class="form-control">
+    </div> <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm-Sunday">Sunday</span>
+      </div>
+      <input type="text" atp-time-picker class="form-control">
+      <input type="text" atp-time-picker class="form-control">
+    </div>
+
+      <h4>Special Holidays</h4>
+      <div  *ngFor="let days of Holidays">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon15">Name</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon14">Date(s)</span>
+          </div>
+          <input  class="form-control" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
+          <owl-date-time [pickerMode]="'dialog'" #dt5></owl-date-time>
+          <input   class="form-control" [owlDateTimeTrigger]="dt6" [owlDateTime]="dt6">
+          <owl-date-time [pickerMode]="'dialog'" #dt6></owl-date-time>
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-success addb" > <i class="material-icons add" (click)="addHoliday()">add</i></button>
+      <button type="button" class="btn btn-outline-danger addb" (click)="removeHoliday()"> <i class="material-icons add">clear</i></button>
+
+
+      <h4>Processing Period</h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="processingperiod">Days</span>
+        </div>
+        <input type="text" class="form-control"  aria-describedby="processingperiod">
+
+      </div>
+
+        <h4>Film Contact</h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon8">Name</span>
+        </div>
+        <input type="text" class="form-control"  aria-describedby="basic-addon8">
+        <input type="text" class="form-control"  aria-describedby="basic-addon8">
+
+      </div>
+      <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon9">Phone</span>
+      </div>
+      <input type="text" class="form-control"  aria-describedby="basic-addon9">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon10">Email</span>
+        </div>
+        <input type="text" class="form-control"  aria-describedby="basic-addon10">
+      </div>
+
+      <h4>Student Contact</h4>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon11">Name</span>
+        </div>
+        <input type="text" class="form-control"  aria-describedby="basic-addon11">
+        <input type="text" class="form-control"  aria-describedby="basic-addon11">
+
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon12">Phone</span>
+        </div>
+        <input type="text" class="form-control"  aria-describedby="basic-addon12">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon13">Email</span>
+        </div>
+        <input type="text" class="form-control"  aria-describedby="basic-addon13">
+      </div>
+
+      <h1 class="display-4">Emergency Services</h1>
+<hr>
+      <h4>Hospitals</h4>
+      <div  *ngFor="let days of Hospital">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="Hospitals-Name">Name</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="Hospitals-Address">Address</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-success addb" > <i class="material-icons add" (click)="addHospital()">add</i></button>
+      <button type="button" class="btn btn-outline-danger addb" (click)="removeHospital()"> <i class="material-icons add">clear</i></button>
+
+      <h4>Fire</h4>
+      <div  *ngFor="let days of Fire">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="Fire-Name">Name</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="Fire-Address">Address</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-success addb" > <i class="material-icons add" (click)="addFire()">add</i></button>
+      <button type="button" class="btn btn-outline-danger addb" (click)="removeFire()"> <i class="material-icons add">clear</i></button>
+
+      <h4>Police</h4>
+      <div  *ngFor="let days of Police">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="Police-Name">Name</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="Police-Address">Address</span>
+          </div>
+          <input type="text" class="form-control"  aria-describedby="basic-addon14">
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-success addb" > <i class="material-icons add" (click)="addPolice()">add</i></button>
+      <button type="button" class="btn btn-outline-danger addb" (click)="removePolice()"> <i class="material-icons add">clear</i></button>
+
+
+      <h1 class="display-4">Rules and Regulations</h1>
+<hr>
+      <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Do I need a Permit?</span>
+      </div>
+      <textarea class="form-control" aria-label="Do I need a Permit?"></textarea>
+    </div><br>
+      <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">How do I get a film permit?</span>
+      </div>
+      <textarea class="form-control" aria-label="How do I get a film permit?"></textarea>
+    </div><br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">What kind of insurance is needed?</span>
+        </div>
+        <textarea class="form-control" aria-label="What kind of insurance is needed?"></textarea>
+      </div><br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Law enforcement or Security requirements</span>
+        </div>
+        <textarea class="form-control" aria-label="What kind of insurance is needed?"></textarea>
+      </div><br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Fire Officials</span>
+        </div>
+        <textarea class="form-control" aria-label="What kind of insurance is needed?"></textarea>
+      </div><br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Filming Hours</span>
+        </div>
+        <textarea class="form-control" aria-label="What kind of insurance is needed?"></textarea>
+      </div><br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Resident Notification Requirements</span>
+        </div>
+        <textarea class="form-control" aria-label="What kind of insurance is needed?"></textarea>
+      </div>
+      <br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Student Discounts</span>
+        </div>
+        <textarea class="form-control" aria-label="What kind of insurance is needed?"></textarea>
+      </div>
+      <br>
+
+
+
+      <h1 class="display-4">Documents</h1>
+      <hr>
+      <h4>Permit</h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile02">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Upload</span>
+        </div>
+      </div>
+      <h4>Certificate of Insurance</h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile03">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Upload</span>
+        </div>
+      </div>
+      <h4>Code of Conduct</h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile04">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Upload</span>
+        </div>
+      </div>
+
+      <h4>Neighbor Notification Form</h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile05">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Upload</span>
+        </div>
+      </div>
+      <h4>Parking</h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile05">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="">Upload</span>
+        </div>
+      </div>
+
+
+      <br>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Submit for Review</button>
+      <button type="button" class="btn btn-success Save addb">    <i class="material-icons add">backup</i>
+      </button>
+
+    </div>
+  </div>
+</div>
+

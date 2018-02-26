@@ -14,19 +14,19 @@ mongoose.connect('mongodb://Haske107:Applegate451!@projectx-shard-00-00-y8jpz.mo
   '.mongodb.net:27017,projectx-shard-00-02-y8jpz.mongodb.net:27017/projectx?ssl=true&replicaSet=projectx-shard-0&authSource=admin');
 
 
-const forceSSL = function() {
-    return function (req, res, next) {
-        if (req.headers['x-forwarded-proto'] !== 'https') {
-            return res.redirect(
-                ['https://', req.get('Host'), req.url].join('')
-            );
-        }
-        next();
-    }
-};
-
-
-app.use(forceSSL());
+// const forceSSL = function() {
+//     return function (req, res, next) {
+//         if (req.headers['x-forwarded-proto'] !== 'https') {
+//             return res.redirect(
+//                 ['https://', req.get('Host'), req.url].join('')
+//             );
+//         }
+//         next();
+//     }
+// };
+//
+//
+// app.use(forceSSL());
 
 
 // view engine setup

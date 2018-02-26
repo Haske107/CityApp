@@ -4,7 +4,7 @@ const path = require('path');
 
 
 router.get('/', function (req, res, next) {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+  res.render('index');
 });
 
 router.get('/*', function(req, res) {

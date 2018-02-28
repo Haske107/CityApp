@@ -18,6 +18,9 @@ export class InfoComponent implements OnInit {
     this.city = new City();
   }
 
+  toHome()  {
+   this.router.navigateByUrl('/home');
+  }
   open(code: string) {
     const amazingTimePicker = this.atp.open();
     amazingTimePicker.afterClose().subscribe(time => {

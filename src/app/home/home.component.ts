@@ -35,4 +35,10 @@ export class HomeComponent implements OnInit {
 
   }
 
+  newCity() {
+    this.upload.selectedCity = new City();
+    console.log(this.upload.selectedCity);
+    this.router.navigateByUrl('/info');
+  }
+
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {City} from '../models/city.model';
 import {AmazingTimePickerService} from 'amazing-time-picker';
 import {UploadService} from '../upload.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-info',
@@ -12,7 +13,7 @@ export class InfoComponent implements OnInit {
 
   city: City;
 
-  constructor( private atp: AmazingTimePickerService, private upload: UploadService
+  constructor( private atp: AmazingTimePickerService, private upload: UploadService, private router: Router
   ) {
     this.city = new City();
   }

@@ -2,11 +2,10 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 var City = require('../model/city.model');
-var User =  require('../model/user');
 
 
 router.get('/', function (req, res, next) {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+  res.render('index');
 });
 
 //Upload new City

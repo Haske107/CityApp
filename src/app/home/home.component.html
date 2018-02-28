@@ -1,0 +1,15 @@
+<div class="row container">
+  <div class="col-md-8 offset-md-2">
+      <h1 class="display-4">City Database</h1>
+    <br>
+    <div class="flex-container">
+      <div class="row cities" *ngFor="let city of Cities" (click)="selectCity(city.name)">
+        <div class="card">
+          <div class="card-body">
+            {{city.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

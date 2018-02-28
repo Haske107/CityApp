@@ -8,7 +8,7 @@ import {InfoComponent} from './info/info.component';
 export const MAIN_ROUTES: Routes = [
 
   // Home Page Routes
-  {path: '', redirectTo: '/info', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'info', component: InfoComponent}
 ];

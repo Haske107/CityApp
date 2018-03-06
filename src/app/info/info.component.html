@@ -22,16 +22,23 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon2">County</span>
+          <span class="input-group-text" id="basic-addonr2">County</span>
         </div>
         <input [(ngModel)]="city.county" type="text" class="form-control" placeholder="" aria-label="County" aria-describedby="basic-addon2">
       </div>
-
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon2r0">Center Coordinates</span>
+        </div>
+        <input [(ngModel)]="city.center.lat" type="number" class="form-control" placeholder="Latitude" aria-label="County1" aria-describedby="basic-addon2">
+        <input [(ngModel)]="city.center.lng" type="number" class="form-control" placeholder="Longitude" aria-label="County2" aria-describedby="basic-addon2">
+      </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon3">Boundary Coordinates</span>
         </div>
-        <input  [(ngModel)]="city.boundarycoordinates" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        <input  [(ngModel)]="CoordinateBuffer" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        <button (click)="stringToCoords()">Test</button>
       </div>
 
       <br>

@@ -18,6 +18,7 @@ export class City {
   parking: any; //
   completed: boolean;
   boundarycoordinates: string; //
+  center: {lat: number, lng: number};
   permitoffice: {
     address: string, //
     phone: string, //
@@ -84,6 +85,10 @@ export class City {
     this.notificationform = '';
     this.parking = '';
     this.completed = false;
+    this.center = {
+      lat: 0,
+      lng: 0,
+    };
     this.permitoffice = {
       address: '', //
         phone: '', //

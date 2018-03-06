@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {City} from '../models/city.model';
 import {AmazingTimePickerService} from 'amazing-time-picker';
 import {UploadService} from '../upload.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-info',
@@ -13,13 +14,18 @@ export class InfoComponent implements OnInit {
 
   city: City;
 
+  CoordinateBuffer: string;
+
+  Coordinates: {};
+
+
   constructor( private atp: AmazingTimePickerService, private upload: UploadService, private router: Router
   ) {
     this.city = new City();
   }
 
-  toHome()  {
-   this.router.navigateByUrl('/home');
+  toHome() {
+    this.router.navigateByUrl('/home');
   }
   open(code: string) {
     const amazingTimePicker = this.atp.open();
@@ -61,6 +67,7 @@ export class InfoComponent implements OnInit {
   }
 
   Save()  {
+    this.stringToCoords();
     this.upload.saveCity(this.city)
       .subscribe(res => {
         console.log(res);
@@ -97,4 +104,16 @@ export class InfoComponent implements OnInit {
     this.city.police.pop();
   }
 
+
+  stringToCoords() {
+    this.city.boundarycoordinates = this.CoordinateBuffer;
+    // for (let i = 0; i < temp.length; i++) {
+    //   if (temp.substr(i, 5) === '] ] ]') {
+    //     console.log(temp.substr(i, 5));
+    //     this.city.boundarycoordinates = temp.slice(83, i + 5);
+    //     return;
+    //
+    //   }
+    // }
+  }
 }

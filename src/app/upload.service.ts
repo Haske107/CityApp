@@ -15,7 +15,7 @@ export class UploadService {
     const body = JSON.stringify(city);
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:3001/save' , body, {headers: headers})
+    return this.http.post('http://loca-city-app.herokuapp.com/save' , body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -24,7 +24,7 @@ export class UploadService {
     const body = name;
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.get('http://localhost:3001/getOne/' + body, {headers: headers})
+    return this.http.get('http://loca-city-app.herokuapp.com/getOne/' + body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -32,7 +32,7 @@ export class UploadService {
   getCities() {
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.get('http://localhost:3001/getAll' )
+    return this.http.get('http://loca-city-app.herokuapp.com/getAll' )
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

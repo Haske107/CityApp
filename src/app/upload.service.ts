@@ -15,7 +15,7 @@ export class UploadService {
     const body = JSON.stringify(city);
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.post('httpsgit a://loca-city-app.herokuapp.com/save' , body, {headers: headers})
+    return this.http.post('https://loca-city-app.herokuapp.com/save' , body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

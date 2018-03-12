@@ -1,6 +1,6 @@
 .container  {
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 24px;
   margin: 0;
 }
@@ -8,10 +8,18 @@
 .cities {
   margin: 10px;
   cursor: pointer;
+  flex-wrap: wrap;
 }
 
 .flex-container {
+  flex-wrap: wrap;
+
   display: flex;
+  height: auto;
+  width: 100%;
+  overflow-x: hidden;
+
+
 }
 .newCity  {
   margin: 10px;

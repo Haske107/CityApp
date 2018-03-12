@@ -22,6 +22,7 @@ export class City {
   permitoffice: {
     address: string, //
     phone: string, //
+    permitprice: number,
     hours: {
       monday: { open: string, close: string }, //
       tuesday: { open: string, close: string }, //
@@ -57,11 +58,13 @@ export class City {
   }];
   police: [{
     name: string, //
+    phone: string,
     address: string, //
     coordinates: { lat: string, lng: string } //
   }];
   fire: [{
     name: string, //
+    phone: string,
     address: string, //
     coordinates: { lat: string, lng: string } //
   }];
@@ -90,6 +93,7 @@ export class City {
       lng: 0,
     };
     this.permitoffice = {
+      permitprice: 0,
       address: '', //
         phone: '', //
       hours: {
@@ -121,8 +125,8 @@ export class City {
       }
     };
     this.hospitals = [{name: '', address: '', coordinates: {lat: '', lng: ''}}];
-    this.fire = [{name: '', address: '', coordinates: {lat: '', lng: ''}}];
-    this.police = [{name: '', address: '', coordinates: {lat: '', lng: ''}}];
+    this.fire = [{name: '', phone: '', address: '', coordinates: {lat: '', lng: ''}}];
+    this.police = [{name: '', address: '', phone: '', coordinates: {lat: '', lng: ''}}];
   }
 
 }

@@ -90,20 +90,20 @@ export class InfoComponent implements OnInit {
     this.city.hospitals.pop();
   }
   addFire()  {
-    this.city.fire.push({name: '', address: '', coordinates: {lat: '', lng: ''}});
+    this.city.fire.push({name: '',    phone: '', address: '', coordinates: {lat: '', lng: ''}});
   }
 
   removeFire()  {
     this.city.fire.pop();
   }
   addPolice()  {
-    this.city.police.push({name: '', address: '', coordinates: {lat: '', lng: ''}});
+    this.city.police.push({name: '', phone: '',
+      address: '', coordinates: {lat: '', lng: ''}});
   }
 
   removePolice()  {
     this.city.police.pop();
   }
-
 
   stringToCoords() {
     this.city.boundarycoordinates = this.CoordinateBuffer;

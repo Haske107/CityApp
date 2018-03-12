@@ -29,6 +29,7 @@ var CitySchema = new schema({
   permitoffice: {
   address: {type: String}, //
     phone: {type: String}, //
+    permitprice: {type: Number},
     hours: {
     monday: { open: {type: String}, close: {type: String} }, //
     tuesday: { open: {type: String}, close: {type: String} }, //

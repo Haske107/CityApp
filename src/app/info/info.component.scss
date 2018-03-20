@@ -1,0 +1,34 @@
+.container  {
+  padding: 24px;
+}
+
+.Save {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  opacity: .3;
+  transition: .3s ease;
+
+}
+
+.Save:hover {
+  opacity: .9;
+  transition: .3s ease;
+}
+
+.backbutton {
+  position: fixed;
+  left: 24px;
+  top: 24px;
+}
+.addb{
+  padding: 0;
+  margin-bottom: 12px;
+}
+.add  {
+  font-size: 24px;
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  height: 36px;
+}

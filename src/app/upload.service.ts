@@ -36,4 +36,31 @@ export class UploadService {
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
+
+  uploadDocument(CityName: string, DocType: string, Document: FormData) {
+    const headers = new Headers({
+      'Content': 'FormData'
+    });
+    return this.http.post('https://loca-city-app.herokuapp.com/upload/' + CityName + '/' + DocType, Document, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  uploadStatus(CityName: string)  {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get('https://loca-city-app.herokuapp.com/uploadStatus/' + CityName, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  completed(CityName: string)  {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get('https://loca-city-app.herokuapp.com/completed/' + CityName, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
 }

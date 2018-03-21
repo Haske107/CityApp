@@ -305,65 +305,63 @@
 
       <h1 class="display-4">Documents</h1>
       <hr>
-      <h4>Permit</h4>
+      <h4>Permit<mat-icon *ngIf="Status.Permit">done</mat-icon></h4>
       <div class="input-group mb-3">
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile02">
+          <input type="file" class="custom-file-input" id="inputGroupFile02" (change)="selectPermit($event)">
           <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
         </div>
         <div class="input-group-append">
-          <span class="input-group-text" id="5">Upload</span>
+          <span class="input-group-text" id="5" (click)="uploadDocument('Permit')">Upload</span>
         </div>
       </div>
-      <h4>Certificate of Insurance</h4>
+      <h4>Certificate of Insurance<mat-icon *ngIf="Status.COI">done</mat-icon></h4>
       <div class="input-group mb-3">
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile03">
+          <input type="file" class="custom-file-input" id="inputGroupFile03" (change)="selectCOI($event)">
           <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
         </div>
         <div class="input-group-append">
-          <span class="input-group-text" id="3">Upload</span>
+          <span class="input-group-text" id="3" (click)="uploadDocument('COI')">Upload</span>
         </div>
       </div>
-      <h4>Code of Conduct</h4>
+      <h4>Code of Conduct<mat-icon *ngIf="Status.COC">done</mat-icon></h4>
       <div class="input-group mb-3">
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile04">
+          <input type="file" class="custom-file-input" id="inputGroupFile04" (change)="selectCOC($event)">
           <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
         </div>
         <div class="input-group-append">
-          <span class="input-group-text" id="2">Upload</span>
-        </div>
-      </div>
-
-      <h4>Neighbor Notification Form</h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile05">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="1">Upload</span>
-        </div>
-      </div>
-      <h4>Parking</h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile045">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="u">Upload</span>
+          <span class="input-group-text" id="2" (click)="uploadDocument('COC')">Upload</span>
         </div>
       </div>
 
+      <h4>Neighbor Notification Form<mat-icon *ngIf="Status.Notify">done</mat-icon></h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile05" (change)="selectNotify($event)">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="1" (click)="uploadDocument('Notify')">Upload</span>
+        </div>
+      </div>
+      <h4>Parking<mat-icon *ngIf="Status.Parking">done</mat-icon></h4>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile045" (change)="selectParking($event)">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="u" (click)="uploadDocument('Parking')">Upload</span>
+        </div>
+      </div>
 
       <br>
       <button type="button" class="btn btn-dark backbutton" (click)="toHome()">Back</button>
-      <button type="button" class="btn btn-primary btn-lg btn-block">Submit for Review</button>
+      <button type="button" class="btn btn-primary btn-lg btn-block" (click)="completed()" >Submit for Review</button>
       <button type="button" class="btn btn-success Save addb" (click)="Save()">    <i class="material-icons add">backup</i>
       </button>
-
     </div>
   </div>
 </div>

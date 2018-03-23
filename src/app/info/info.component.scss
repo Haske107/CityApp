@@ -35,3 +35,41 @@
 .mat-icon  {
   color: forestgreen;
 }
+
+
+Mat-Card  {
+  padding: 12px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.UploadedRow  {
+  margin: 8px;
+  background-color: #d6fed6;
+  display: flex;
+  justify-content: flex-start;
+}
+  .RemoveButton {
+    position: absolute;
+    right: 12px;
+    bottom: 6px;
+  }
+.SelectedRow  {
+  margin: 8px;
+  background-color: #fef9d6;
+  display: flex;
+  justify-content: flex-start;
+
+}
+.SelectorRow  {
+}
+  .SelectorColumn {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+.hidden {
+  display: none;
+}

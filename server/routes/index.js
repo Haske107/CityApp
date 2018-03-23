@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 var City = require('../model/city.model');
+var Document = require('../model/Document');
 var mongoose = require('mongoose');
 var multer = require('multer');
 var gridfsstorage = require('multer-gridfs-storage');
@@ -9,27 +10,25 @@ var Grid = require('gridfs-stream');
 var conn = mongoose.connection;
 var gfs = new Grid(conn, mongoose.mongo);
 var storage = gridfsstorage({
-  url: 'mongodb://Haske107:Applegate451!@projectx-shard-00-00-y8jpz.mongodb.net:27017,projectx-shard-00-01-y8jpz' +
-  '.mongodb.net:27017,projectx-shard-00-02-y8jpz.mongodb.net:27017/projectx?ssl=true&replicaSet=projectx-shard-0&authSource=admin',
+  url: 'mongodb://Haske107:Applegate451!@projectx-shard-00-00-y8jpz.mongodb.net:27017,projectx-shard-00-01-y8jpz.mongodb.net:27017,projectx-shard-00-02-y8jpz.mongodb.net:27017/projectx?ssl=true&replicaSet=projectx-shard-0&authSource=admin',
 
   filename: function(req,file,cb) {
     cb(null, req.params.Name);
 
   },
   metadata: function(req,file,cb) {
-    cb(null, req.params.DocType);
+    cb(null, {type: req.params.DocType, name: file.originalname});
   },
+
 
   root: 'CityDocs'
 });
-var DocUpload = multer({ storage: storage }).single('Document');
+var DocUpload = multer({ storage: storage }).array('Document', 10);
 
 
 router.get('/', function (req, res, next) {
   res.render('index');
 });
-
-//Upload new City
 router.post('/save', function (req, res) {
   City.findOne({name : req.body.name}, function (err, city) {
       if(!city) {
@@ -65,8 +64,6 @@ router.post('/save', function (req, res) {
       }
   });
 });
-
-
 router.get('/getAll', function(req, res)  {
   City.find()
     .exec(function(err, Cities)  {
@@ -76,8 +73,6 @@ router.get('/getAll', function(req, res)  {
       });
     });
 });
-
-
 router.get('/getOne/:Name', function(req, res)  {
   City.findOne({name: req.params.Name}, function (err, City)  {
     if(!City) {
@@ -94,7 +89,6 @@ router.get('/getOne/:Name', function(req, res)  {
     }
   });
 });
-
 router.get('/completed/:Name', function(req, res)  {
   City.findOne({name: req.params.Name}, function (err, City)  {
     if(!City) {
@@ -113,52 +107,9 @@ router.get('/completed/:Name', function(req, res)  {
     }
   });
 });
-
-
-
-router.get('/uploadStatus/:Name', function(req, res) {
-  gfs.findOne({filename: req.params.Name, root: 'CityDocs', metadata: 'Permit'}, function (err, file) {
-    var statusObj =   {
-      Permit: false,
-      COI: false,
-      COC: false,
-      Notify: false,
-      Parking: false
-    };
-    if(file)  {
-      statusObj.Permit = true;
-    }
-    gfs.findOne({filename: req.params.Name, root: 'CityDocs', metadata: 'COI'}, function (err, file) {
-      if(file)  {
-        statusObj.COI = true;
-      }
-      gfs.findOne({filename: req.params.Name, root: 'CityDocs', metadata: 'COC'}, function (err, file) {
-        if(file)  {
-          statusObj.COC = true;
-        }
-        gfs.findOne({filename: req.params.Name, root: 'CityDocs', metadata: 'Notify'}, function (err, file) {
-          if(file)  {
-            statusObj.Notify = true;
-          }
-          gfs.findOne({filename: req.params.Name, root: 'CityDocs', metadata: 'Parking'}, function (err, file) {
-            if(file)  {
-              statusObj.Parking = true;
-            }
-            return res.status(200).json({
-              obj: statusObj
-            });
-          });
-        });
-      });
-    });
-  });
-});
-
-
-  router.post('/upload/:Name/:DocType', function (req, res) {
-    gfs.findOne({filename: req.params.Name, root: 'CityDocs', metadata: req.params.DocType}, function (err, file) {
+router.post('/upload/:Name/:DocType', function (req, res) {
+    gfs.findOne({filename: req.params.Name, root: 'CityDocs', "metadata.type": req.params.DocType}, function (err, file) {
       if (err) {
-
         return res.status(401).json({
           message: 'Error with GridFs  ' + req.params.Name + '!',
           obj: req.file
@@ -199,6 +150,29 @@ router.get('/uploadStatus/:Name', function(req, res) {
       }
     });
   });
+router.get('/uploads/:Name/:DocType', function(req, res)  {
+  var Files = gfs.collection('CityDocs').find({filename: req.params.Name, "metadata.type": req.params.DocType});
+  var Names = [];
+  Files.toArray(function(err, result) {
+   result.forEach( function(item) {
+     Names.push(item.metadata.name);
+   });
+   return res.status(200).json({
+     names: Names
+   });
+  });
+});
+router.get('/removeDoc/:Name/:FileName/:DocType', function(req, res) {
+  gfs.collection('CityDocs').remove({filename: req.params.Name, metadata: {type: req.params.DocType, name: req.params.FileName}}, function(err, file)  {
+    if(!err)  {
+      res.status(200).json({
+        message: "succesfully removed " + req.params.FileName
+      });
+    } else {
+      console.log(err);
+    }
+  })
+});
 
 
   module.exports = router;

@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { InfoComponent } from './info/info.component';
 import {MainRoutesModule} from "./app.routing";
 import {UploadService} from "./upload.service";
-import {MatIconModule, MatSnackBarModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatIconModule, MatSnackBarModule} from '@angular/material';
 
 
 @NgModule({
@@ -24,6 +24,8 @@ import {MatIconModule, MatSnackBarModule} from "@angular/material";
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
+    MatCardModule,
     BrowserAnimationsModule,
     AmazingTimePickerModule,
     OwlDateTimeModule,

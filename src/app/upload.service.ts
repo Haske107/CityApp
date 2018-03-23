@@ -15,7 +15,7 @@ export class UploadService {
     const body = JSON.stringify(city);
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.post('https://loca-city-app.herokuapp.com/save' , body, {headers: headers})
+    return this.http.post('https://www.loca-city-app.herokuapp.com/save' , body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -24,7 +24,7 @@ export class UploadService {
     const body = name;
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.get('https://loca-city-app.herokuapp.com/getOne/' + body, {headers: headers})
+    return this.http.get('https://www.loca-city-app.herokuapp.com/getOne/' + body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -32,7 +32,7 @@ export class UploadService {
   getCities() {
     const headers = new Headers({
       'Content-Type': 'application/json'});
-    return this.http.get('https://loca-city-app.herokuapp.com/getAll' )
+    return this.http.get('https://www.loca-city-app.herokuapp.com/getAll' )
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -41,25 +41,39 @@ export class UploadService {
     const headers = new Headers({
       'Content': 'FormData'
     });
-    return this.http.post('https://loca-city-app.herokuapp.com/upload/' + CityName + '/' + DocType, Document, {headers: headers})
+    return this.http.post('https://www.loca-city-app.herokuapp.com/upload/' + CityName + '/' + DocType, Document, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
-  uploadStatus(CityName: string)  {
+
+ // DOCUMENT CRUDS OPS
+
+  getUploads(CityName: string, DocType: string)  {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.get('https://loca-city-app.herokuapp.com/uploadStatus/' + CityName, {headers: headers})
+    return this.http.get('https://www.loca-city-app.herokuapp.com/uploads/' + CityName + '/' + DocType, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
+  removeUpload(CityName: string, DocumentName: string, DocType: string)  {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get('https://www.loca-city-app.herokuapp.com/removeDoc/' + CityName + '/' + DocumentName + '/' + DocType, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  /////////////////////////////////////////
+
 
   completed(CityName: string)  {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.get('https://loca-city-app.herokuapp.com/completed/' + CityName, {headers: headers})
+    return this.http.get('https://www.loca-city-app.herokuapp.com/completed/' + CityName, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

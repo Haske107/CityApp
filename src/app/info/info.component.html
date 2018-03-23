@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <h1 class="display-1">{{city.name}}</h1>
-
       <br><br>
       <h1 class="display-4">General Information</h1>
       <hr>
@@ -305,57 +304,101 @@
 
       <h1 class="display-4">Documents</h1>
       <hr>
-      <h4>Permit<mat-icon *ngIf="Status.Permit">done</mat-icon></h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile02" (change)="selectPermit($event)">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="5" (click)="uploadDocument('Permit')">Upload</span>
-        </div>
-      </div>
-      <h4>Certificate of Insurance<mat-icon *ngIf="Status.COI">done</mat-icon></h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile03" (change)="selectCOI($event)">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="3" (click)="uploadDocument('COI')">Upload</span>
-        </div>
-      </div>
-      <h4>Code of Conduct<mat-icon *ngIf="Status.COC">done</mat-icon></h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile04" (change)="selectCOC($event)">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="2" (click)="uploadDocument('COC')">Upload</span>
-        </div>
-      </div>
 
-      <h4>Neighbor Notification Form<mat-icon *ngIf="Status.Notify">done</mat-icon></h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile05" (change)="selectNotify($event)">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+      <!-- PERMIT DOCUMENT UPLOAD SECTION -->
+      <h4>Permit</h4>
+      <mat-card class="row UploadedRow" *ngFor="let Document of UploadedPermits; let i = index">
+        <span>{{Document}}</span>
+        <button mat-button class="RemoveButton" (click)="removeUploadedPermit(i)">Remove Document</button>
+      </mat-card>
+      <mat-card class="row SelectedRow" *ngFor="let Document of SelectedPermits; let i = index">
+        {{Document.name}}
+        <button mat-button class="RemoveButton" (click)="removeSelectedPermit(i)">Remove Document</button>
+      </mat-card>
+      <div class="row SelectorRow">
+        <div class="col-md-4 SelectorColumn">
+          <button mat-raised-button (click)="PermitInput.click()"> Browse</button>
+          <button mat-raised-button (click)="uploadPermit()"> Upload</button>
         </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="1" (click)="uploadDocument('Notify')">Upload</span>
-        </div>
+        <input #PermitInput multiple type="file" class="hidden" (change)="selectPermit($event)">
       </div>
-      <h4>Parking<mat-icon *ngIf="Status.Parking">done</mat-icon></h4>
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile045" (change)="selectParking($event)">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+      <!-- END PERMIT SECTION -->
+
+      <!-- COI DOCUMENT UPLOAD SECTION -->
+      <h4>Insurance Documents</h4>
+      <mat-card class="row UploadedRow" *ngFor="let Document of UploadedCOI; let i = index">
+        <span>{{Document}}</span>
+        <button mat-button class="RemoveButton" (click)="removeUploadedCOI(i)">Remove Document</button>
+      </mat-card>
+      <mat-card class="row SelectedRow" *ngFor="let Document of SelectedCOI; let i = index">
+        {{Document.name}}
+        <button mat-button class="RemoveButton" (click)="removeSelectedCOI(i)">Remove Document</button>
+      </mat-card>
+      <div class="row SelectorRow">
+        <div class="col-md-4 SelectorColumn">
+          <button mat-raised-button (click)="COIInput.click()"> Browse</button>
+          <button mat-raised-button (click)="uploadCOI()"> Upload</button>
         </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="u" (click)="uploadDocument('Parking')">Upload</span>
-        </div>
+        <input #COIInput multiple type="file" class="hidden" (change)="selectCOI($event)">
       </div>
+      <!-- END COI SECTION -->
+
+      <!-- COC DOCUMENT UPLOAD SECTION -->
+      <h4>Code of Conduct</h4>
+      <mat-card class="row UploadedRow" *ngFor="let Document of UploadedCOC; let i = index">
+        <span>{{Document}}</span>
+        <button mat-button class="RemoveButton" (click)="removeUploadedCOC(i)">Remove Document</button>
+      </mat-card>
+      <mat-card class="row SelectedRow" *ngFor="let Document of SelectedCOC; let i = index">
+        {{Document.name}}
+        <button mat-button class="RemoveButton" (click)="removeSelectedCOC(i)">Remove Document</button>
+      </mat-card>
+      <div class="row SelectorRow">
+        <div class="col-md-4 SelectorColumn">
+          <button mat-raised-button (click)="COCInput.click()"> Browse</button>
+          <button mat-raised-button (click)="uploadCOC()"> Upload</button>
+        </div>
+        <input #COCInput multiple type="file" class="hidden" (change)="selectCOC($event)">
+      </div>
+      <!-- END COC SECTION -->
+
+      <!-- Parking DOCUMENT UPLOAD SECTION -->
+      <h4>Parking</h4>
+      <mat-card class="row UploadedRow" *ngFor="let Document of UploadedParking; let i = index">
+        <span>{{Document}}</span>
+        <button mat-button class="RemoveButton" (click)="removeUploadedParking(i)">Remove Document</button>
+      </mat-card>
+      <mat-card class="row SelectedRow" *ngFor="let Document of SelectedParking; let i = index">
+        {{Document.name}}
+        <button mat-button class="RemoveButton" (click)="removeSelectedParking(i)">Remove Document</button>
+      </mat-card>
+      <div class="row SelectorRow">
+        <div class="col-md-4 SelectorColumn">
+          <button mat-raised-button (click)="ParkingInput.click()"> Browse</button>
+          <button mat-raised-button (click)="uploadParking()"> Upload</button>
+        </div>
+        <input #ParkingInput multiple type="file" class="hidden" (change)="selectParking($event)">
+      </div>
+      <!-- END Parking SECTION -->
+
+      <!-- Notify DOCUMENT UPLOAD SECTION -->
+      <h4>Neighbor Notification</h4>
+      <mat-card class="row UploadedRow" *ngFor="let Document of UploadedNotify; let i = index">
+        <span>{{Document}}</span>
+        <button mat-button class="RemoveButton" (click)="removeUploadedNotify(i)">Remove Document</button>
+      </mat-card>
+      <mat-card class="row SelectedRow" *ngFor="let Document of SelectedNotify; let i = index">
+        {{Document.name}}
+        <button mat-button class="RemoveButton" (click)="removeSelectedNotify(i)">Remove Document</button>
+      </mat-card>
+      <div class="row SelectorRow">
+        <div class="col-md-4 SelectorColumn">
+          <button mat-raised-button (click)="NotifyInput.click()"> Browse</button>
+          <button mat-raised-button (click)="uploadNotify()"> Upload</button>
+        </div>
+        <input #NotifyInput multiple type="file" class="hidden" (change)="selectNotify($event)">
+      </div>
+      <!-- END Notify SECTION -->
 
       <br>
       <button type="button" class="btn btn-dark backbutton" (click)="toHome()">Back</button>
@@ -364,5 +407,6 @@
       </button>
     </div>
   </div>
+
 </div>
 

@@ -10,7 +10,9 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  Cities: City[];
+  NewCities: City[] = [];
+  Cities: City[] = [];
+  DoneCities: City[] = [];
 
   constructor(private upload: UploadService, private router: Router) { }
 
@@ -21,7 +23,14 @@ export class HomeComponent implements OnInit {
   getCities() {
     this.upload.getCities().subscribe(
       data => {
-        this.Cities = data.obj;
+        this.NewCities = data.obj;
+      this.NewCities.forEach( _City =>  {
+        if (_City.completed) {
+          this.DoneCities.push(_City);
+        } else {
+          this.Cities.push(_City);
+        }
+      });
       }
     );
   }

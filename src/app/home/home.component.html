@@ -2,6 +2,8 @@
   <div class="col-md-8 offset-md-2">
       <h1 class="display-4">City Database</h1>
     <br>
+    <h4>In Progress</h4>
+    <hr>
     <div class="flex-container">
       <div class="cities" *ngFor="let city of Cities" (click)="selectCity(city.name)">
         <div class="card">
@@ -10,7 +12,22 @@
           </div>
         </div>
       </div>
+
     </div>
+    <br>
+    <h4>Completed</h4>
+    <hr>
+    <div class="flex-container">
+      <div class="cities" *ngFor="let city of DoneCities" (click)="selectCity(city.name)">
+        <div class="card">
+          <div class="card-body">
+            {{city.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr>
     <button class="btn btn-success newCity" (click)="newCity()">Add New City</button>
   </div>
 </div>
